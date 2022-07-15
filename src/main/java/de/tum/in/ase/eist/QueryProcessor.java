@@ -2,7 +2,10 @@ package de.tum.in.ase.eist;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
 
 @Service
 public class QueryProcessor {
@@ -31,8 +34,16 @@ public class QueryProcessor {
         else if (query.contains("largest")) {
             query.replace(",","");
             String[] array = query.split(" ");
+            List<Integer> list = new ArrayList<Integer>();
+            for (String x:
+                    array) {
+                try {
+                    list.add(Integer.parseInt(x));
+                }catch (Exception e){
+                    continue;
+                }
 
-            return "" + Math.max(Integer.parseInt(array[8]),Integer.parseInt(array[9]));
+            return "" + list.stream().mapToInt(y -> y).max();
         }
 //        else if (){
 //            return "";
