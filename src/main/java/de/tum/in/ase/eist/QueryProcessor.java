@@ -23,10 +23,16 @@ public class QueryProcessor {
                 try {
                     number += Integer.parseInt(x);
                 }catch (Exception e){
-
+                    continue;
                 }
             }
             return "" + number;
+        }
+        else if (query.contains("largest")) {
+            query.replace(",","");
+            String[] array = query.split(" ");
+
+            return "" + Math.max(Integer.parseInt(array[8]),Integer.parseInt(array[9]));
         }
 //        else if (){
 //            return "";
