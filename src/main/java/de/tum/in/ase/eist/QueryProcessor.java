@@ -2,6 +2,8 @@ package de.tum.in.ase.eist;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+
 @Service
 public class QueryProcessor {
 
@@ -13,9 +15,18 @@ public class QueryProcessor {
                     "writer in the English language and the world's pre-eminent dramatist.";
         } else if (query.contains("name")) {
             return "natac";
-        }
-        else if (query.contains("11")){
-            return "23";
+        } else if (query.contains("plus")) {
+            String[] array = query.split(" ");
+            int number = 0;
+            for (String x:
+                 array) {
+                try {
+                    number += Integer.parseInt(x);
+                }catch (Exception e){
+
+                }
+            }
+            return "" + number;
         }
 //        else if (){
 //            return "";
